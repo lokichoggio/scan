@@ -1,0 +1,45 @@
+ethAddr: "https://sepolia.infura.io/v3/28fd06b6448e45dea118a8168584d47e"
+ethWsAddr: "wss://sepolia.infura.io/ws/v3/28fd06b6448e45dea118a8168584d47e"
+
+erc20ABIFilePath: "pkg/token/token_sol_ERC20Token.abi"
+
+# 扫链开始区块
+#startBlockNumber: 4118238 # ordinary tx
+#startBlockNumber: 4149974 # create contract
+#startBlockNumber: 4150000 # token transfer from
+startBlockNumber: 4189558 # token transfer to
+
+# 扫链并发 间隔5个区块 sleep 10s
+scanIntervalBlock: 5
+scanIntervalTimeSeconds: 10
+
+# 特定地址列表
+specificAddressList: [
+  "0x8021f00c28C0e43788AE1a11f1F97eBf80d131bD",
+  "0xFB783F32F6A00BF6A4E60897A7734F0A2732173A"
+]
+
+db:
+  dsn: "root:88888888@tcp(localhost:3306)/scan?charset=utf8mb4&parseTime=True&loc=Local"
+  max_open: 20
+  max_idle: 10
+  max_lifetime: 3600
+  log_mode: 4
+
+log:
+  file: "./log/scan.log"
+  errFile: "./log/scan-err.log"
+  # debug info warn error
+  level: "debug"
+  # 日志json格式输出, 如果不输出json, 可以配置成 console
+  encoding: "json"
+  # 是否打印到标准输出中
+  stdout: true
+  # 日志文件大小限制, 单位: MB
+  maxSize: 1024
+  # 最大保留日志文件数量
+  maxBackups: 30
+  # 日志文件保留天数
+  maxAge: 30
+  # 是否压缩
+  compress: true
